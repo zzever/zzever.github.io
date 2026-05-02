@@ -263,6 +263,167 @@
     .banner-link{font-size:var(--text-sm);color:var(--color-text-inverse);opacity:0.8;text-decoration:underline;}
     .banner-link:hover{opacity:1;}
   </style>
+  <hr style="border:none;border-top:1px solid var(--color-divider, #2a2926);">
+
+<section id="clientes" aria-labelledby="clientes-heading" style="padding-block:clamp(3rem,7vw,5rem);">
+  <div style="max-width:960px;margin-inline:auto;padding-inline:1.5rem;">
+
+    <!-- Cabecera -->
+    <p style="font-size:0.75rem;font-family:'Space Mono',monospace,sans-serif;color:var(--color-primary,#f09a20);
+              letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:.75rem;
+              margin-bottom:1.5rem;">
+      Con quienes he trabajado
+      <span style="flex:1;height:1px;background:var(--color-divider,#2a2926);display:block;"></span>
+    </p>
+    <h2 id="clientes-heading"
+        style="font-size:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);font-family:'Space Grotesk',sans-serif;
+               font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;">
+      Empresas &amp; Eventos
+    </h2>
+    <p style="font-size:clamp(1rem,.95rem + .25vw,1.125rem);color:var(--color-text-muted,#7a7770);
+              max-width:60ch;margin-bottom:2.5rem;line-height:1.65;">
+      Productoras, festivales y empresas de sonido e iluminación con las que he colaborado en Tenerife y Canarias.
+    </p>
+
+    <!-- Grid de tarjetas -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(180px,100%),1fr));
+                gap:1rem;">
+
+      <!-- Empresa 1 -->
+      <article style="background:var(--color-surface,#151412);
+                      border:1px solid oklch(from var(--color-text,#e8e4dc) l c h / 0.09);
+                      border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;
+                      align-items:center;gap:.75rem;text-align:center;
+                      transition:box-shadow 180ms ease,transform 180ms ease;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px oklch(0 0 0 / 0.35)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:80px;height:80px;border-radius:.5rem;overflow:hidden;background:#1a1916;
+                    display:flex;align-items:center;justify-content:center;">
+          <img src="assets/logo-empresa-e.jpg"
+               alt="Empresa de eventos Tenerife"
+               width="80" height="80"
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <p style="font-size:.875rem;font-weight:700;color:var(--color-text,#e8e4dc);margin-bottom:.25rem;">
+            Empresa Eventos
+          </p>
+          <p style="font-size:.75rem;color:var(--color-text-muted,#7a7770);font-family:monospace;">
+            Tenerife · Espectáculos
+          </p>
+        </div>
+      </article>
+
+      <!-- Empresa 2 — Sonopluss -->
+      <article style="background:var(--color-surface,#151412);
+                      border:1px solid oklch(from var(--color-text,#e8e4dc) l c h / 0.09);
+                      border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;
+                      align-items:center;gap:.75rem;text-align:center;
+                      transition:box-shadow 180ms ease,transform 180ms ease;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px oklch(0 0 0 / 0.35)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:80px;height:80px;border-radius:.5rem;overflow:hidden;background:#fff;
+                    display:flex;align-items:center;justify-content:center;">
+          <img src="assets/sonoplus.jpg"
+               alt="Sonopluss Canarias — sonido e iluminación"
+               width="80" height="80"
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:contain;padding:4px;">
+        </div>
+        <div>
+          <p style="font-size:.875rem;font-weight:700;color:var(--color-text,#e8e4dc);margin-bottom:.25rem;">
+            Sonopluss Canarias
+          </p>
+          <p style="font-size:.75rem;color:var(--color-text-muted,#7a7770);font-family:monospace;">
+            Sonido &amp; Iluminación
+          </p>
+        </div>
+      </article>
+
+      <!-- Evento — Carnaval -->
+      <article style="background:var(--color-surface,#151412);
+                      border:1px solid oklch(from var(--color-text,#e8e4dc) l c h / 0.09);
+                      border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;
+                      align-items:center;gap:.75rem;text-align:center;
+                      transition:box-shadow 180ms ease,transform 180ms ease;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px oklch(0 0 0 / 0.35)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:80px;height:80px;border-radius:.5rem;overflow:hidden;
+                    display:flex;align-items:center;justify-content:center;">
+          <img src="assets/carnaval2026.jpg"
+               alt="Carnaval de Santa Cruz de Tenerife 2026"
+               width="80" height="80"
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <p style="font-size:.875rem;font-weight:700;color:var(--color-text,#e8e4dc);margin-bottom:.25rem;">
+            Carnaval Tenerife
+          </p>
+          <p style="font-size:.75rem;color:var(--color-text-muted,#7a7770);font-family:monospace;">
+            2026 · Gran evento
+          </p>
+        </div>
+      </article>
+
+      <!-- Empresa — Farra World -->
+      <article style="background:var(--color-surface,#151412);
+                      border:1px solid oklch(from var(--color-text,#e8e4dc) l c h / 0.09);
+                      border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;
+                      align-items:center;gap:.75rem;text-align:center;
+                      transition:box-shadow 180ms ease,transform 180ms ease;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px oklch(0 0 0 / 0.35)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:80px;height:80px;border-radius:.5rem;overflow:hidden;
+                    display:flex;align-items:center;justify-content:center;">
+          <img src="assets/farraworld.jpg"
+               alt="Farra World"
+               width="80" height="80"
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div>
+          <p style="font-size:.875rem;font-weight:700;color:var(--color-text,#e8e4dc);margin-bottom:.25rem;">
+            Farra World
+          </p>
+          <p style="font-size:.75rem;color:var(--color-text-muted,#7a7770);font-family:monospace;">
+            Entretenimiento &amp; Eventos
+          </p>
+        </div>
+      </article>
+
+      <!-- Empresa — MAPPA -->
+      <article style="background:var(--color-surface,#151412);
+                      border:1px solid oklch(from var(--color-text,#e8e4dc) l c h / 0.09);
+                      border-radius:.75rem;padding:1.25rem;display:flex;flex-direction:column;
+                      align-items:center;gap:.75rem;text-align:center;
+                      transition:box-shadow 180ms ease,transform 180ms ease;"
+               onmouseover="this.style.transform='translateY(-3px)';this.style.boxShadow='0 8px 24px oklch(0 0 0 / 0.35)'"
+               onmouseout="this.style.transform='';this.style.boxShadow=''">
+        <div style="width:80px;height:80px;border-radius:.5rem;overflow:hidden;background:#1f2b2b;
+                    display:flex;align-items:center;justify-content:center;">
+          <img src="assets/mappa.jpg"
+               alt="MAPPA"
+               width="80" height="80"
+               loading="lazy"
+               style="width:100%;height:100%;object-fit:contain;padding:6px;">
+        </div>
+        <div>
+          <p style="font-size:.875rem;font-weight:700;color:var(--color-text,#e8e4dc);margin-bottom:.25rem;">
+            MAPPA
+          </p>
+          <p style="font-size:.75rem;color:var(--color-text-muted,#7a7770);font-family:monospace;">
+            Producción AV
+          </p>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+  </div>
+</section>
+
+<!-- FIN SECCIÓN EMPRESAS & EVENTOS -->
 </head>
 
 <body>
