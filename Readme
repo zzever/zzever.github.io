@@ -24,32 +24,6 @@ Para cambiar la URL por una que no se pueda adivinar:
 
 y actualiza el `href` del enlace `.veil` en `index.html`.
 
-Alojamiento en orkestr.run
---------------------------
-orkestr publica cada repositorio en un subdominio propio con HTTPS automático y
-admite repositorios privados:
 
-1. Settings → conecta GitHub y deja el repo en privado (GitHub → Settings →
-   General → Danger Zone → Change visibility).
-2. Projects → New Project → este repositorio, rama `main`.
-3. El slug del proyecto es el subdominio: `zzever` → https://zzever.orkestr.run/
-4. Deploy. Al traer `Dockerfile`, orkestr lo usa tal cual.
 
-Subdominios y directorios
--------------------------
-- Cada subdominio `*.orkestr.run` es un proyecto independiente:
-    - `tmdb-streaming-services.orkestr.run` → repo `zzever/tmdb-streaming-services`
-    - `<slug>.orkestr.run`                  → este repositorio
-- Dentro del sitio los directorios se sirven con URL limpia:
-    - `/personal/`  → `personal/index.html`
-    - `/contacto`   → `contacto.html`  (archivo suelto, sin carpeta)
-- Añadir una sección nueva es crear la carpeta con su `index.html`; no hay que
-  tocar `Dockerfile` ni `nginx.conf`.
 
-Ejecución local
----------------
-    docker build -t zzever .
-    docker run --rm -p 8080:8080 zzever          # http://localhost:8080
-
-    # sin Docker:
-    python3 -m http.server 8080
