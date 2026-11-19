@@ -1,2 +1,55 @@
-Archivo web Portfolio personal
-https://zzever.github.io/
+zzever — directorio personal
+============================
+
+Sitio estático sin build (HTML + CSS inline) servido por nginx. Contiene dos
+páginas y no usa rutas absolutas, así que funciona en la raíz de un dominio, en
+un subdominio o bajo un directorio.
+
+Estructura
+----------
+    index.html            Directorio personal: índice de sitios y repositorios.
+    personal/index.html   Portfolio con los datos de contacto.
+    nginx.conf            Servidor estático con URLs limpias para directorios.
+    Dockerfile            Imagen nginx sin privilegios (puerto 8080) para orkestr.
+
+Enlace oculto
+-------------
+`/personal/` no aparece en el directorio: se llega sólo por el punto del pie de
+página o escribiendo la URL. Lleva `noindex, nofollow` para que no lo indexen los
+buscadores (no se usa robots.txt a propósito, porque ahí sí quedaría escrito).
+
+Para cambiar la URL por una que no se pueda adivinar:
+
+    git mv personal acceso-7f3c2
+
+y actualiza el `href` del enlace `.veil` en `index.html`.
+
+Alojamiento en orkestr.run
+--------------------------
+orkestr publica cada repositorio en un subdominio propio con HTTPS automático y
+admite repositorios privados:
+
+1. Settings → conecta GitHub y deja el repo en privado (GitHub → Settings →
+   General → Danger Zone → Change visibility).
+2. Projects → New Project → este repositorio, rama `main`.
+3. El slug del proyecto es el subdominio: `zzever` → https://zzever.orkestr.run/
+4. Deploy. Al traer `Dockerfile`, orkestr lo usa tal cual.
+
+Subdominios y directorios
+-------------------------
+- Cada subdominio `*.orkestr.run` es un proyecto independiente:
+    - `tmdb-streaming-services.orkestr.run` → repo `zzever/tmdb-streaming-services`
+    - `<slug>.orkestr.run`                  → este repositorio
+- Dentro del sitio los directorios se sirven con URL limpia:
+    - `/personal/`  → `personal/index.html`
+    - `/contacto`   → `contacto.html`  (archivo suelto, sin carpeta)
+- Añadir una sección nueva es crear la carpeta con su `index.html`; no hay que
+  tocar `Dockerfile` ni `nginx.conf`.
+
+Ejecución local
+---------------
+    docker build -t zzever .
+    docker run --rm -p 8080:8080 zzever          # http://localhost:8080
+
+    # sin Docker:
+    python3 -m http.server 8080
