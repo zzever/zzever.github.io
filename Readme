@@ -12,17 +12,7 @@ Estructura
     nginx.conf            Servidor estático con URLs limpias para directorios.
     Dockerfile            Imagen nginx sin privilegios (puerto 8080) para orkestr.
 
-Enlace oculto
--------------
-`/personal/` no aparece en el directorio: se llega sólo por el punto del pie de
-página o escribiendo la URL. Lleva `noindex, nofollow` para que no lo indexen los
-buscadores (no se usa robots.txt a propósito, porque ahí sí quedaría escrito).
 
-Para cambiar la URL por una que no se pueda adivinar:
-
-    git mv personal acceso-7f3c2
-
-y actualiza el `href` del enlace `.veil` en `index.html`.
 
 
 
