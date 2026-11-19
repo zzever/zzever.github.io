@@ -1,9 +1,10 @@
 zzever — directorio personal
 ============================
 
-Sitio estático sin build (HTML + CSS inline) servido por nginx. Contiene dos
-páginas y no usa rutas absolutas, así que funciona en la raíz de un dominio, en
-un subdominio o bajo un directorio.
+Sitio estático sin build (HTML + CSS inline), publicado en GitHub Pages y
+servible también con el nginx incluido. Contiene dos páginas y no usa rutas
+absolutas, así que funciona en la raíz de un dominio, en un subdominio o bajo
+un directorio.
 
 Estructura
 ----------
