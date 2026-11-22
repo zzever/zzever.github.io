@@ -1,11 +1,6 @@
 zzever — directorio personal
 ============================
 
-Sitio estático sin build (HTML + CSS inline), publicado en GitHub Pages y
-servible también con el nginx incluido. Contiene dos páginas y no usa rutas
-absolutas, así que funciona en la raíz de un dominio, en un subdominio o bajo
-un directorio.
-
 Estructura
 ----------
     index.html            Directorio personal: índice de sitios y repositorios.
