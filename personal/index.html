@@ -223,6 +223,16 @@
     .contact-link{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--color-text-muted);font-size:var(--text-sm);}
     .contact-link:hover{color:var(--color-primary);}
     .contact-link-icon{width:36px;height:36px;border-radius:var(--radius-md);background:var(--color-surface-offset);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+    .contact-form{display:flex;flex-direction:column;gap:var(--space-4);margin-top:var(--space-6);max-width:32rem;}
+    .contact-form .field{display:flex;flex-direction:column;gap:var(--space-2);}
+    .contact-form label{font-size:var(--text-sm);font-weight:600;color:var(--color-text-muted);}
+    .contact-form input,.contact-form textarea{width:100%;padding:var(--space-3) var(--space-4);background:var(--color-surface-offset);border:1px solid oklch(from var(--color-text) l c h / 0.18);border-radius:var(--radius-md);color:var(--color-text);font:inherit;font-size:var(--text-sm);}
+    .contact-form input:focus-visible,.contact-form textarea:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;}
+    .contact-form textarea{min-height:8rem;resize:vertical;}
+    .contact-form .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+    .contact-form-note{margin:0;font-size:var(--text-sm);color:var(--color-text-muted);}
+    .contact-form-note.ok{color:var(--color-primary);}
+    .contact-form-note.error{color:#e05a5a;}
     .availability-badge{display:inline-flex;align-items:center;gap:var(--space-2);padding:var(--space-2) var(--space-4);background:color-mix(in oklch,#22c55e 15%,var(--color-surface));border:1px solid color-mix(in oklch,#22c55e 30%,transparent);border-radius:var(--radius-full);font-size:var(--text-xs);font-family:var(--font-mono);color:#22c55e;margin-bottom:var(--space-6);}
     .availability-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s ease infinite;}
     @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
@@ -870,23 +880,27 @@
                 <span class="availability-dot"></span>
                 Disponible para nuevos proyectos
               </div>
-              <div class="contact-links">
-                <a href="mailto:ezequielverapadron@gmail.com" class="contact-link">
-                  <div class="contact-link-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                  </div>
-                  ezequielverapadron@gmail.com
-                </a>
-                <a href="tel:+34671373163" class="contact-link">
-                  <div class="contact-link-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.78a16 16 0 0 0 6 6l.78-.78a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16l-.08.92z"/></svg>
-                  </div>
-                  +34671373163
-                </a>
-              </div>
-              <a href="https://wa.me/34671373163" class="contact-link" target="_blank" rel="noopener">
-                    Whatsapp
-              </a>
+              <form class="contact-form" id="contact-form" action="https://formspree.io/f/XXXXXXXX" method="POST">
+                <p class="contact-form-note" id="contact-status" role="status" aria-live="polite">Los tres campos son obligatorios. Tus datos solo se usan para responderte.</p>
+                <div class="field">
+                  <label for="c-nombre">Nombre</label>
+                  <input id="c-nombre" name="nombre" type="text" autocomplete="name" maxlength="80" required>
+                </div>
+                <div class="field">
+                  <label for="c-email">Correo electrónico</label>
+                  <input id="c-email" name="email" type="email" autocomplete="email" maxlength="120" required>
+                </div>
+                <div class="field">
+                  <label for="c-mensaje">Mensaje</label>
+                  <textarea id="c-mensaje" name="mensaje" rows="5" maxlength="2000" required></textarea>
+                </div>
+                <div class="hp" aria-hidden="true">
+                  <label for="c-gotcha">No rellenar</label>
+                  <input id="c-gotcha" name="_gotcha" type="text" tabindex="-1" autocomplete="off">
+                </div>
+                <input type="hidden" name="_subject" value="Nuevo mensaje desde la web">
+                <button type="submit" class="btn-primary" id="contact-submit">Enviar mensaje</button>
+              </form>
             </div>
 
             <!-- Specialties quick list -->
@@ -995,6 +1009,40 @@
     }, {threshold:0.3});
     const statsBar = document.querySelector('.stats-bar');
     if(statsBar) statsObs.observe(statsBar);
+  </script>
+  <script>
+    // Envío del formulario sin recargar. Sin JS, el POST normal a Formspree también funciona.
+    (function(){
+      var form = document.getElementById('contact-form');
+      if(!form) return;
+      var note = document.getElementById('contact-status');
+      var button = document.getElementById('contact-submit');
+      var ready = form.getAttribute('action').indexOf('XXXXXXXX') === -1;
+      form.addEventListener('submit', function(event){
+        event.preventDefault();
+        if(form.elements._gotcha && form.elements._gotcha.value) return;
+        if(!ready){
+          note.textContent = 'El formulario todavía no está activado. Prueba de nuevo más adelante.';
+          note.className = 'contact-form-note error';
+          return;
+        }
+        button.disabled = true;
+        note.textContent = 'Enviando…';
+        note.className = 'contact-form-note';
+        fetch(form.action, {method:'POST', body:new FormData(form), headers:{'Accept':'application/json'}})
+          .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+          .then(function(){
+            form.reset();
+            note.textContent = 'Mensaje enviado. Te responderé lo antes posible.';
+            note.className = 'contact-form-note ok';
+          })
+          .catch(function(){
+            note.textContent = 'No se pudo enviar. Vuelve a intentarlo en unos minutos.';
+            note.className = 'contact-form-note error';
+          })
+          .then(function(){ button.disabled = false; });
+      });
+    })();
   </script>
 </body>
 </html>
